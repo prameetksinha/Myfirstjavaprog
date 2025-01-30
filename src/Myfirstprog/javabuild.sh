@@ -1,8 +1,8 @@
 #!/bin/bash
  
-javac Mysecondjavaprogram.java
+#javac Myfirstjavaprogram.java
 
 # Wait for any process to exit
-wait -n
+#sleep 10 
 
-java Mysecondjavaprogram.java
+java Myfirstjavaprogram.java

@@ -4,6 +4,8 @@ FROM openjdk:11
 # Set the working directory inside the container
 WORKDIR /app
 
+COPY Myfirstjavaprogram.java Myfirstjavaprogram.java
+
 # Copy the compiled Java class to the container
 #COPY Myfirstjavaprogram.class .
 
