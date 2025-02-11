@@ -9,9 +9,9 @@ remote_host=10.10.11.111
 remote_dir=/home/sharda/prameet
 mount_point=/home/sharda/prameet
 current_host=10.10.11.77
-container_name="prameet-image"
+#container_name="prameet-image"
+container_id=$(docker container ls  | grep 'prameet-image' | awk '{print $1}')
 container_name=$(docker container ls  | grep 'prameet-image' | awk '{print $2}')
-containerid=$(docker container ls  | grep 'prameet-image' | awk '{print $1}')
 
 check_sshfs() {
     if ! command -v sshfs &> /dev/null; then
@@ -67,23 +67,22 @@ unmount_remote() {
 
 #copy container in mounted dir
 copy_container() {
-    echo "Copying the container to remote location from $current_host to $remote_host"
+    echo "save and copying the container from $current_host to $remote_host"
 
     # 
     # ToDo : Send a mail with all the information
     #
-    echo "docker commit... for container $containerid"
-    docker commit $containerid $container_name_$current_host
 
-    echo "docker save... for $container_name"
-    docker save -o $current_host"_docker_container".tar $container_name
+    echo "saving container image $container_name"
+    docker save $container_name:latest | gzip > $current_host"_"$container_id.tar.gz
+
+    echo "dir list is $(ls -l)"
+
+    echo "copying container $current_host"_"$containerid.tar.gz to $remote_dir"
+    docker cp $current_host"_"$container_id.tar.gz $remote_dir
  
-    echo "copying container $container_name to $remote_dir"
-    # Copy data from container to remote mount directory
-    docker cp  $container_name $remote_dir
- 
-    # Stop the container
-    docker stop $containerid
+    echo "Stopping container $container_id"
+    docker stop $container_id
 
     echo "Verifing the data copied to remote location"
     ls $remote_dir
