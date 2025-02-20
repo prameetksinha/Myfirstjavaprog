@@ -11,4 +11,5 @@ COPY Myfirstjavaprogram.java Myfirstjavaprogram.java
 
 # Command to run the Java program
 COPY javabuild.sh javabuild.sh
+
 CMD ./javabuild.sh
