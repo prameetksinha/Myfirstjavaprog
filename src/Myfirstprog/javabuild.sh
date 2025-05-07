@@ -9,6 +9,6 @@
 
 echo "compiling java program started by prameet"
 
-java Myfirstjavaprogram.java
+java Myfirstprog
 
-echo "completing java program started by prameet"
+echo "completing java program completed by prameet"

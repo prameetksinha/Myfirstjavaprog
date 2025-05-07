@@ -5,10 +5,10 @@ docker ps
 #mkdir /home/user/mount_dir
 
 remote_user=sharda
-remote_host=10.10.11.111
-remote_dir=/home/sharda/prameet
+remote_host=10.10.5.141
+remote_dir=/home/sharda/prameet-remote
 mount_point=/home/sharda/prameet
-current_host=10.10.11.77
+current_host=172.17.0.1
 #container_name="prameet-image"
 container_id=$(docker container ls  | grep 'prameet-image' | awk '{print $1}')
 container_name=$(docker container ls  | grep 'prameet-image' | awk '{print $2}')
@@ -20,7 +20,7 @@ check_sshfs() {
         sudo apt-get install sshfs
         #exit 1
     else
-            echo "sshfs is install in the system, continuing..."
+        echo "sshfs is install in the system, continuing..."
     fi
 }
 
