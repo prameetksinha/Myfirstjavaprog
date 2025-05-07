@@ -1,0 +1,18 @@
+#if docker is not install
+
+#sudo snap install docker
+
+#sudo docker run hello-world
+
+#install git (optional)
+#sudo apt-get install git
+#git config --global user.name "prameetksinha"
+#git config --global user.email "prameet.sinha@gmail.com"
+#git config --list
+
+#get the code
+#git clone https://github.com/prameetksinha/Myfirstjavaprog.git
+
+#git add .
+#git commit -am "changes"
+#git push origin main
